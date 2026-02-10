@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our complete portfolio of web design, management systems, and cloud solutions projects - Asseminate Solutions">
+    <meta name="keywords" content="portfolio, projects, web design, management systems, cloud solutions, Sri Lanka">
+    <title>Our Projects | Asseminate Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --primary-green: #6CB52D;
+            --dark-green: #2D5016;
+            --black: #0A0A0A;
+            --charcoal: #1A1A1A;
+            --gray: #666666;
+            --light-gray: #E5E5E5;
+            --white: #FFFFFF;
+            
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-glow: 0 0 40px rgba(108, 181, 45, 0.3);
+        }
+        
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--primary-green);
+            color: var(--black);
+        }
+        
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        
+        /* NAVIGATION */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(108, 181, 45, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 5px 30px rgba(108, 181, 45, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(108, 181, 45, 0.3));
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            filter: drop-shadow(0 0 20px rgba(108, 181, 45, 0.6));
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: var(--primary-green);
+            color: var(--black);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .nav-cta:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-green);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* PAGE HEADER */
+        .page-header {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--black) 0%, #0d1a0d 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(108, 181, 45, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-subtitle {
+            font-family: var(--font-mono);
+            color: var(--primary-green);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .page-header h1 {
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary-green);
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        /* PORTFOLIO SECTION */
+        .portfolio {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.7rem 1.8rem;
+            background: transparent;
+            color: var(--light-gray);
+            border: 2px solid rgba(108, 181, 45, 0.3);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-green);
+            color: var(--black);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+        
+        .portfolio-stats {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .portfolio-count {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        
+        .portfolio-count span {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d1a0d 100%);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(108, 181, 45, 0.1);
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-item:nth-child(2) { animation-delay: 0.15s; }
+        .portfolio-item:nth-child(3) { animation-delay: 0.2s; }
+        .portfolio-item:nth-child(4) { animation-delay: 0.25s; }
+        .portfolio-item:nth-child(n+5) { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(108, 181, 45, 0.3);
+            border-color: var(--primary-green);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+            opacity: 0.3;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 181, 45, 0.9), rgba(45, 80, 22, 0.9));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .portfolio-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--black);
+            background: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .portfolio-overlay p {
+            text-align: center;
+            color: var(--white);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-link {
+            display: inline-block;
+            padding: 0;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            border: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .portfolio-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+        
+        .portfolio-link:hover {
+            color: var(--black);
+            transform: translateX(5px);
+        }
+        
+        .portfolio-link:hover::after {
+            background: var(--black);
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            font-family: var(--font-heading);
+        }
+        
+        .cta-button:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--black);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(108, 181, 45, 0.2);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .footer-brand p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(108, 181, 45, 0.1);
+            border: 1px solid rgba(108, 181, 45, 0.3);
+            border-radius: 8px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-green);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-green);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(108, 181, 45, 0.1);
+            color: var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9rem;
+        }
+        
+        .footer-services {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: var(--black);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(108, 181, 45, 0.4);
+        }
+        
+        .scroll-top.visible {
+            display: flex;
+        }
+        
+        .scroll-top:hover {
+            background: var(--white);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 300px;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-left: 1px solid rgba(108, 181, 45, 0.2);
+                transition: right 0.4s ease;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 8rem 1.5rem 3rem;
+            }
+            
+            .portfolio {
+                padding: 4rem 1.5rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo {
+                height: 40px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo.png" alt="Asseminate Solutions Logo" class="logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="projects.html" class="active">Portfolio</a></li>
+                <li><a href="index.html#clients">Clients</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <p class="page-subtitle">Our Work</p>
+            <h1>Complete Portfolio</h1>
+            <p class="page-description">Explore our diverse range of successful projects spanning web design, management systems, and cloud solutions. Each project showcases our commitment to excellence and innovation.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Portfolio</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Design</button>
+            <button class="filter-btn" data-filter="system">Management Systems</button>
+            <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
+        </div>
+        
+        <div class="portfolio-stats">
+            <p class="portfolio-count">Showing <span id="projectCount">39</span> projects</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p1.jpg" alt="Project 1" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Shoppers Machang</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p2.jpg" alt="Project 2" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>SD Rent a Car</h3>
+                    <p>Rent a Car Business</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p3.jpg" alt="Project 3" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Rio Cabs</h3>
+                    <p>Rent a Car Business</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p4.jpg" alt="Project 4" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Orio Bean Bags</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p5.jpg" alt="Project 5" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Nishu Korean Cosmetic</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p6.jpg" alt="Project 6" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>NatureX Ceylon</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p7.jpg" alt="Project 7" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Nandana Enterprises</h3>
+                    <p>Hardware Store & Wholeseller</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p8.jpg" alt="Project 8" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>New Athuraliya Jeweller</h3>
+                    <p>Jewellwert Shop</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p9.jpg" alt="Project 9" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Econ with MW</h3>
+                    <p>LMS with Educational</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p10.jpg" alt="Project 10" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>LPCM.LK</h3>
+                    <p>LMS with Educational</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p11.jpg" alt="Project 11" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Liyora Design</h3>
+                    <p>Clothing Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p12.jpg" alt="Project 12" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Jayasiri Tuk Tuk Tours</h3>
+                    <p>Tourism</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p13.jpg" alt="Project 13" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Hairy - Hair Oil</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p14.jpg" alt="Project 14" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Godadamu.LK</h3>
+                    <p>LMS & Education Institute</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p15.jpg" alt="Project 15" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Furnitures.LK</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p16.jpg" alt="Project 16" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Elixir Wellness</h3>
+                    <p>Beauty & Wellness Clinic</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p17.jpg" alt="Project 17" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Eco Village Tour</h3>
+                    <p>Habarana-Tourism</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p18.jpg" alt="Project 18" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Shashel Lanka</h3>
+                    <p>Foreign Employment Agency</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="Web">
+                <img src="Projects/p19.jpg" alt="Project 19" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>D Plus Solar</h3>
+                    <p>Renewable Energy Company</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p20.jpg" alt="Project 20" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>The Club Events</h3>
+                    <p>Event Managment Company</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p21.jpg" alt="Project 21" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Chrish Lanka Tours</h3>
+                    <p>Tourism</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p22.jpg" alt="Project 22" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Chiton Clothing</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p23.jpg" alt="Project 23" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Smart Cart</h3>
+                    <p>Online Store</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p24.jpg" alt="Project 24" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 24</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p25.jpg" alt="Project 25" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 25</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p26.jpg" alt="Project 26" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 26</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p27.jpg" alt="Project 27" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 27</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p28.jpg" alt="Project 28" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 28</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p29.jpg" alt="Project 29" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 29</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p30.jpg" alt="Project 30" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 30</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p31.jpg" alt="Project 31" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 31</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p32.jpg" alt="Project 32" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 32</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p33.jpg" alt="Project 33" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 33</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p34.jpg" alt="Project 34" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 34</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p35.jpg" alt="Project 35" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 35</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p36.jpg" alt="Project 36" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 36</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p37.jpg" alt="Project 37" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 37</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p38.jpg" alt="Project 38" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 38</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <img src="Projects/p39.jpg" alt="Project 39" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Web Design</span>
+                    <h3>Project Title 39</h3>
+                    <p>Project description</p>
+                    <a href="#" class="portfolio-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+            
+        </div>    
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's transform your vision into a stunning digital reality. Our team is ready to bring your ideas to life with cutting-edge technology and innovative design.</p>
+            <a href="index.html#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Asseminate Solutions<br>Private Limited</h3>
+                <p>Beyond the Brand - Creating sustainable digital innovations that save millions of seconds and transform businesses worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/asseminate/" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://web.facebook.com/asseminate" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Asseminate" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#services">Web Design</a></li>
+                    <li><a href="index.html#services">Web Development</a></li>
+                    <li><a href="index.html#services">Management Systems</a></li>
+                    <li><a href="index.html#services">Cloud Solutions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#process">Our Process</a></li>
+                    <li><a href="projects.html">Portfolio</a></li>
+                    <li><a href="index.html#clients">Clients</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Asseminate Solutions (Pvt) Ltd. All rights reserved.</p>
+            <p class="footer-services">Web Design & Development | Branding & Printing | Cloud & Digital Services</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Portfolio filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const projectCount = document.getElementById('projectCount');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                let visibleCount = 0;
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                        visibleCount++;
+                    } else {
+                        if (item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 10);
+                            visibleCount++;
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+                
+                // Update count
+                projectCount.textContent = visibleCount;
+            });
+        });
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
