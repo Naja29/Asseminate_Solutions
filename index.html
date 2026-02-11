@@ -1893,7 +1893,7 @@
                 <div class="info-block">
                     <h4>Direct contact</h4>
                     <p><strong>Phone / WhatsApp:</strong></p>
-                    <a href="https://wa.me/94718465999" target="_blank">+94 71 846 5999</a>
+                    <a href="https://wa.me/94718456999" target="_blank">+94 71 845 6999</a>
                     <a href="https://wa.me/94717580511" target="_blank">+94 71 758 0511</a>
                     <p style="margin-top: 1rem;"><strong>Email:</strong></p>
                     <a href="mailto:sales@asseminate.com">sales@asseminate.com</a>
@@ -1985,16 +1985,16 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 Asseminate Solutions (Pvt) Ltd. All rights reserved.</p>
+            <p>&copy; <span id="currentYear"></span> Asseminate Solutions (Pvt) Ltd. All rights reserved.</p>
             <p class="footer-services">Web Design & Development | Branding & Printing | Cloud & Digital Services</p>
         </div>
     </footer>
@@ -2003,6 +2003,9 @@
     <button class="scroll-top" id="scrollTop">↑</button>
 
     <script>
+        // Auto-update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Mobile Menu Toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -2166,7 +2169,7 @@
             const message = `*New Project Enquiry*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(business)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Project Type:* ${encodeURIComponent(projectType)}%0A%0A*Details:*%0A${encodeURIComponent(details)}`;
             
             // WhatsApp number
-            const whatsappNumber = '94718465999';
+            const whatsappNumber = '94718456999';
             
             // Open WhatsApp with message
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
