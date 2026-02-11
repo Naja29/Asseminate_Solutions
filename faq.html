@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FAQ - Asseminate Solutions. Find answers to frequently asked questions about our web design, development, and cloud services.">
+    <title>FAQ | Asseminate Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --primary-green: #6CB52D;
+            --dark-green: #2D5016;
+            --black: #0A0A0A;
+            --charcoal: #1A1A1A;
+            --gray: #666666;
+            --light-gray: #E5E5E5;
+            --white: #FFFFFF;
+            
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-glow: 0 0 40px rgba(108, 181, 45, 0.3);
+        }
+        
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--primary-green);
+            color: var(--black);
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+        
+        /* NAVIGATION */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(108, 181, 45, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 5px 30px rgba(108, 181, 45, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(108, 181, 45, 0.3));
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            filter: drop-shadow(0 0 20px rgba(108, 181, 45, 0.6));
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: var(--primary-green);
+            color: var(--black);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .nav-cta:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-green);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* PAGE HEADER */
+        .page-header {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--black) 0%, #0d1a0d 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(108, 181, 45, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-subtitle {
+            font-family: var(--font-mono);
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .page-header h1 {
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary-green);
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        /* FAQ SECTION */
+        .faq-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Search Bar */
+        .faq-search {
+            margin-bottom: 3rem;
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 3rem 1.2rem 1.5rem;
+            background: var(--charcoal);
+            border: 2px solid rgba(108, 181, 45, 0.2);
+            border-radius: 50px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 4px rgba(108, 181, 45, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-green);
+            font-size: 1.3rem;
+        }
+        
+        /* Category Tabs */
+        .faq-categories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-tab {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--light-gray);
+            border: 2px solid rgba(108, 181, 45, 0.3);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--primary-green);
+            color: var(--black);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+        
+        /* FAQ Items */
+        .faq-category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-category-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(108, 181, 45, 0.2);
+        }
+        
+        .faq-item {
+            background: var(--charcoal);
+            border: 1px solid rgba(108, 181, 45, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(108, 181, 45, 0.3);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: rgba(108, 181, 45, 0.05);
+        }
+        
+        .faq-question h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 2rem 1.5rem 2rem;
+        }
+        
+        .faq-answer p {
+            color: var(--light-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer li {
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        
+        .faq-answer li::marker {
+            color: var(--primary-green);
+        }
+        
+        /* Still Have Questions */
+        .faq-cta {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .faq-cta h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-cta p {
+            color: var(--black);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .cta-btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .cta-btn-primary:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .cta-btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--black);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(108, 181, 45, 0.2);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .footer-brand p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(108, 181, 45, 0.1);
+            border: 1px solid rgba(108, 181, 45, 0.3);
+            border-radius: 8px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-green);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-green);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(108, 181, 45, 0.1);
+            color: var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9rem;
+        }
+        
+        .footer-services {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: var(--black);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(108, 181, 45, 0.4);
+        }
+        
+        .scroll-top.visible {
+            display: flex;
+        }
+        
+        .scroll-top:hover {
+            background: var(--white);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 300px;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-left: 1px solid rgba(108, 181, 45, 0.2);
+                transition: right 0.4s ease;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 8rem 1.5rem 3rem;
+            }
+            
+            .faq-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .faq-question {
+                padding: 1.2rem 1.5rem;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 0 1.5rem 1.2rem 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo {
+                height: 40px;
+            }
+            
+            .faq-categories {
+                gap: 0.5rem;
+            }
+            
+            .category-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo.png" alt="Asseminate Solutions Logo" class="logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="index.html#clients">Clients</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <p class="page-subtitle">Help Center</p>
+            <h1>Frequently Asked Questions</h1>
+            <p class="page-description">Find quick answers to common questions about our services, pricing, project process, and more.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>FAQ</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <!-- Search Bar -->
+        <div class="faq-search">
+            <div class="search-box">
+                <input type="text" class="search-input" id="faqSearch" placeholder="Search for answers...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="faq-categories">
+            <button class="category-tab active" data-category="all">All Questions</button>
+            <button class="category-tab" data-category="general">General</button>
+            <button class="category-tab" data-category="services">Services</button>
+            <button class="category-tab" data-category="pricing">Pricing</button>
+            <button class="category-tab" data-category="project">Project Process</button>
+            <button class="category-tab" data-category="technical">Technical</button>
+        </div>
+
+        <!-- General Questions -->
+        <div class="faq-category-section" data-category="general">
+            <h2>General Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What does Asseminate Solutions specialize in?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Asseminate Solutions is a full-service digital agency specializing in:</p>
+                    <ul>
+                        <li>Website Design & Development - Custom, responsive websites for all business needs</li>
+                        <li>Management Systems - CRM, inventory, project management, and custom dashboards</li>
+                        <li>Cloud Based Solutions - Cloud migration, SaaS applications, hosting, and API development</li>
+                        <li>Branding & Printing - Logo design, marketing materials, and print services</li>
+                    </ul>
+                    <p>With over 7 years of experience, we've completed 1000+ projects for 750+ clients worldwide.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Where are you located?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We have two offices in Sri Lanka:</p>
+                    <p><strong>Weliveriya Office (Main):</strong><br>
+                    135/1, Kirindivela Road, Etikeleghala, Weliveriya, Western Province (11710)</p>
+                    <p><strong>Malabe Office:</strong><br>
+                    23/17A, New Kandy Road, Kaduwela, Malabe, Western Province (10640)</p>
+                    <p>However, we work with clients globally through online communication and collaboration tools.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you work with international clients?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We work with clients from all over the world. Our team is experienced in remote collaboration and we use modern communication tools to ensure smooth project delivery regardless of location. We've successfully completed projects for clients in Asia, Europe, North America, and Australia.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What are your business hours?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM (Sri Lanka Time)<br>
+                    <strong>Saturday:</strong> 9:00 AM - 1:00 PM<br>
+                    <strong>Sunday:</strong> Closed</p>
+                    <p>For urgent matters, you can reach us via email or WhatsApp, and we'll respond as soon as possible.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Questions -->
+        <div class="faq-category-section" data-category="services">
+            <h2>Services & Deliverables</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What's included in a website design package?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our standard website package includes:</p>
+                    <ul>
+                        <li>Custom responsive design (mobile, tablet, desktop)</li>
+                        <li>Professional layout and UI/UX design</li>
+                        <li>Content management system (CMS)</li>
+                        <li>Contact forms and email integration</li>
+                        <li>Basic SEO optimization</li>
+                        <li>Social media integration</li>
+                        <li>SSL certificate setup</li>
+                        <li>1 year of domain registration</li>
+                        <li>3 months of hosting (if using our hosting)</li>
+                        <li>30-day bug fix warranty</li>
+                        <li>Training on how to manage your website</li>
+                    </ul>
+                    <p>Additional features like e-commerce, advanced integrations, and custom functionality are available as add-ons.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can you redesign my existing website?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We offer website redesign services to modernize outdated websites, improve user experience, enhance mobile responsiveness, and boost performance. We'll analyze your current site, identify areas for improvement, and create a fresh design while preserving your content and SEO rankings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you provide website maintenance?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer monthly maintenance packages that include:</p>
+                    <ul>
+                        <li>Regular security updates</li>
+                        <li>Plugin and software updates</li>
+                        <li>Website backups</li>
+                        <li>Performance monitoring</li>
+                        <li>Content updates (limited hours per month)</li>
+                        <li>Technical support</li>
+                        <li>Uptime monitoring</li>
+                    </ul>
+                    <p>Maintenance plans start from affordable monthly rates. Contact us for a custom quote.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can you help with SEO and digital marketing?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We provide basic on-page SEO optimization with all our websites, including meta tags, structured data, and performance optimization. For more comprehensive SEO and digital marketing services, we can recommend trusted partners or discuss adding these services to your project scope.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you build mobile apps?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We build native mobile applications for both iOS and Android platforms, as well as cross-platform solutions. Our mobile app development services include:</p>
+                    <ul>
+                        <li>Native iOS Apps (Swift/Objective-C)</li>    
+                        <li>Native Android Apps (Kotlin/Java)</li>    
+                        <li>Cross-Platform Apps (React Native, Flutter)</li>
+                        <li>Progressive Web Apps (PWAs)</li>    
+                        <li>Mobile app UI/UX design</li>        
+                        <li>App Store and Google Play deployment</li>    
+                        <li>App maintenance and updates</li>    
+                        <li>API integration and backend development</li>    
+                    </ul>    
+                    <p>Whether you need a simple app or a complex mobile solution with advanced features, our experienced team can bring your vision to life. We follow platform-specific guidelines to ensure the best user experience on each device.</p>    
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Questions -->
+        <div class="faq-category-section" data-category="pricing">
+            <h2>Pricing & Payment</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How much does a website cost?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Website costs vary based on complexity, features, and requirements. Here are general ranges:</p>
+                    <ul>
+                        <li><strong>Basic Website (5-10 pages):</strong> Starting from LKR 75,000</li>
+                        <li><strong>Business Website (10-20 pages):</strong> LKR 150,000 - 300,000</li>
+                        <li><strong>E-commerce Website:</strong> LKR 250,000 - 500,000+</li>
+                        <li><strong>Custom Web Application:</strong> Custom quote based on requirements</li>
+                    </ul>
+                    <p>Contact us for a detailed, personalized quote based on your specific needs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What payment methods do you accept?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept multiple payment methods for your convenience:</p>
+                    <ul>
+                        <li>Bank transfer (local and international)</li>
+                        <li>Credit/Debit cards</li>
+                        <li>Online payment platforms</li>
+                        <li>PayPal (for international clients)</li>
+                        <li>Installment plans (for larger projects)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is your payment schedule?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our standard payment structure is:</p>
+                    <ul>
+                        <li><strong>50% Deposit:</strong> Required upfront to begin work</li>
+                        <li><strong>30% Milestone Payment:</strong> After design approval (if applicable)</li>
+                        <li><strong>20% Final Payment:</strong> Upon project completion and delivery</li>
+                    </ul>
+                    <p>For larger projects, we can arrange custom milestone payments. Monthly services are billed at the beginning of each month.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you offer refunds?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our refund policy:</p>
+                    <ul>
+                        <li>Initial deposits are non-refundable once work has commenced</li>
+                        <li>If you're unsatisfied with the work, we'll make revisions to meet your expectations</li>
+                        <li>Monthly services can be canceled with prorated refunds for unused portions</li>
+                        <li>Quality issues are addressed through revisions before considering refunds</li>
+                    </ul>
+                    <p>We're committed to your satisfaction and will work with you to resolve any concerns.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Are there any hidden costs?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, we believe in transparent pricing. All costs are outlined in your project proposal, including:</p>
+                    <ul>
+                        <li>Design and development costs</li>
+                        <li>Domain registration (if applicable)</li>
+                        <li>Hosting fees (if using our hosting)</li>
+                        <li>Third-party services (stock photos, premium plugins, etc.)</li>
+                        <li>Revisions beyond the agreed scope</li>
+                    </ul>
+                    <p>Any additional costs that arise during the project will be discussed and approved by you before proceeding.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Process Questions -->
+        <div class="faq-category-section" data-category="project">
+            <h2>Project Process</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does it take to build a website?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Typical timelines:</p>
+                    <ul>
+                        <li><strong>Basic Website (5-10 pages):</strong> 2-3 weeks</li>
+                        <li><strong>Business Website (10-20 pages):</strong> 4-6 weeks</li>
+                        <li><strong>E-commerce Website:</strong> 6-10 weeks</li>
+                        <li><strong>Custom Web Application:</strong> 8-16 weeks or more</li>
+                    </ul>
+                    <p>Timelines depend on project complexity, your responsiveness with feedback and content, and any additional features. Rush projects may be available for an additional fee.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What do you need from me to get started?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To begin your project, we'll need:</p>
+                    <ul>
+                        <li>Clear project requirements and goals</li>
+                        <li>Content (text, images, videos)</li>
+                        <li>Branding materials (logo, colors, fonts)</li>
+                        <li>Examples of websites you like</li>
+                        <li>Access to existing accounts (domain, hosting, if applicable)</li>
+                        <li>Contact information for collaboration</li>
+                    </ul>
+                    <p>Don't worry if you don't have everything ready - we'll guide you through the process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Will I be able to update the website myself?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We build websites with user-friendly content management systems (CMS) that allow you to make updates without technical knowledge. We'll provide:</p>
+                    <ul>
+                        <li>Training session on how to use your CMS</li>
+                        <li>Video tutorials for reference</li>
+                        <li>Documentation</li>
+                        <li>Ongoing support if needed</li>
+                    </ul>
+                    <p>You'll be able to update text, images, blog posts, and more on your own.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How many revisions do I get?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our standard packages include:</p>
+                    <ul>
+                        <li>2-3 rounds of revisions during the design phase</li>
+                        <li>Minor adjustments during development</li>
+                        <li>Bug fixes within 30 days after launch</li>
+                    </ul>
+                    <p>Additional revisions beyond the agreed scope can be added for a fee. We want you to be completely satisfied with the final result.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What happens if I need changes after the website is live?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer several options:</p>
+                    <ul>
+                        <li><strong>Bugs & Issues:</strong> Covered free for 30 days after launch</li>
+                        <li><strong>Small Changes:</strong> Quick updates can be billed hourly</li>
+                        <li><strong>Ongoing Updates:</strong> Monthly maintenance packages</li>
+                        <li><strong>Major Changes:</strong> New project quote</li>
+                    </ul>
+                    <p>We're here to support you long after your website launches.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Questions -->
+        <div class="faq-category-section" data-category="technical">
+            <h2>Technical Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Will my website be mobile-friendly?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! All websites we build are fully responsive, meaning they automatically adapt to any screen size - desktop, tablet, or mobile. With over 60% of web traffic coming from mobile devices, we ensure your site looks and works perfectly on all devices.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do I own the website after it's built?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Upon full payment, you own:</p>
+                    <ul>
+                        <li>The custom design and content</li>
+                        <li>The developed code specific to your project</li>
+                        <li>Your domain name and hosting account</li>
+                        <li>All content and media assets</li>
+                    </ul>
+                    <p>We retain rights to reusable components, frameworks, and tools we use. Third-party elements (plugins, themes) remain subject to their respective licenses.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What happens if my website goes down?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>If you're on our hosting or maintenance plan:</p>
+                    <ul>
+                        <li>We monitor your site 24/7</li>
+                        <li>You'll be notified immediately of any issues</li>
+                        <li>We'll work to restore service as quickly as possible</li>
+                        <li>Regular backups ensure data recovery</li>
+                    </ul>
+                    <p>If you host elsewhere, contact your hosting provider first, then reach out to us if you need technical assistance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you provide hosting services?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer reliable hosting solutions with:</p>
+                    <ul>
+                        <li>99.9% uptime guarantee</li>
+                        <li>SSL certificates included</li>
+                        <li>Regular backups</li>
+                        <li>Security monitoring</li>
+                        <li>Email accounts</li>
+                        <li>Technical support</li>
+                    </ul>
+                    <p>You can also use your own hosting provider if you prefer. We can work with any hosting service.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is my website secure?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Security is a top priority. We implement:</p>
+                    <ul>
+                        <li>SSL certificates (HTTPS encryption)</li>
+                        <li>Regular security updates</li>
+                        <li>Secure coding practices</li>
+                        <li>Firewall protection</li>
+                        <li>Regular backups</li>
+                        <li>Malware scanning</li>
+                        <li>Strong password requirements</li>
+                    </ul>
+                    <p>We follow industry best practices to protect your website and user data.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can you integrate third-party services?</h3>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We can integrate various third-party services including:</p>
+                    <ul>
+                        <li>Payment gateways (PayPal, Stripe, etc.)</li>
+                        <li>Email marketing platforms (MailChimp, etc.)</li>
+                        <li>CRM systems</li>
+                        <li>Social media platforms</li>
+                        <li>Analytics tools (Google Analytics, etc.)</li>
+                        <li>Booking and reservation systems</li>
+                        <li>Custom APIs</li>
+                    </ul>
+                    <p>Let us know what integrations you need, and we'll make it work.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions CTA -->
+        <div class="faq-cta">
+            <h2>Still Have Questions?</h2>
+            <p>Can't find the answer you're looking for? Our team is here to help!</p>
+            <div class="cta-buttons">
+                <a href="support.html" class="cta-btn cta-btn-primary">Contact Support</a>
+                <a href="index.html#contact" class="cta-btn cta-btn-secondary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Asseminate Solutions<br>Private Limited</h3>
+                <p>Beyond the Brand - Creating sustainable digital innovations that save millions of seconds and transform businesses worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/asseminate/" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/asseminate/" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://web.facebook.com/asseminate" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Asseminate" class="social-link" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#services">Web Design</a></li>
+                    <li><a href="index.html#services">Web Development</a></li>
+                    <li><a href="index.html#services">Management Systems</a></li>
+                    <li><a href="index.html#services">Cloud Solutions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#process">Our Process</a></li>
+                    <li><a href="projects.html">Portfolio</a></li>
+                    <li><a href="index.html#clients">Clients</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Asseminate Solutions (Pvt) Ltd. All rights reserved.</p>
+            <p class="footer-services">Web Design & Development | Branding & Printing | Cloud & Digital Services</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Auto-update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Category Filter
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const categorySections = document.querySelectorAll('.faq-category-section');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const category = tab.getAttribute('data-category');
+                
+                // Update active tab
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show/hide sections
+                if (category === 'all') {
+                    categorySections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                } else {
+                    categorySections.forEach(section => {
+                        if (section.getAttribute('data-category') === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                }
+                
+                // Close all FAQ items when switching categories
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            });
+        });
+        
+        // Search Functionality
+        const searchInput = document.getElementById('faqSearch');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm === '') {
+                // Show all items if search is empty
+                faqItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+                categorySections.forEach(section => {
+                    section.style.display = 'block';
+                });
+                return;
+            }
+            
+            // Search through FAQ items
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Hide empty sections
+            categorySections.forEach(section => {
+                const visibleItems = section.querySelectorAll('.faq-item[style="display: block;"]');
+                if (visibleItems.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
